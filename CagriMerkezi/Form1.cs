@@ -19,6 +19,7 @@ namespace CagriMerkezi
         {
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
+
             TicariMusteriHizmetleri ticari = new TicariMusteriHizmetleri();
             ticari.ID = 1;
             ticari.Name = "Kadir Salaç";
@@ -43,17 +44,18 @@ namespace CagriMerkezi
             cmbTemsilci.Items.Clear();
 
         }
+
         int a = 0;
         int toplamAramaSayisi = 0;
         PriorityQueue queue = new PriorityQueue(100);
         Musteri musteri = new Musteri();
+
         private void btnOrnekVeri_Click(object sender, EventArgs e)
         {
             queue.Insert(1);
             queue.Insert(2);
             //musteri.MusteriId[0] = 1;
             //musteri.MusteriId[1] = 2;
-
 
             a += 2;
         }
@@ -66,7 +68,6 @@ namespace CagriMerkezi
             queue.Insert(a);
             Thread thread = new Thread(SiraBekleme);
             thread.Start();
-            //lvCagri.Items.Clear();
             btnOrnekVeri.Visible = false;
 
         }
@@ -94,7 +95,7 @@ namespace CagriMerkezi
         }
 
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)//timer ile zaman sayacı oluşturma
         {
             if (saniye==60)
             {
@@ -106,7 +107,6 @@ namespace CagriMerkezi
                 dakika = 0;
                 saat++;
             }
-            //lblCagri.Text = saat.ToString() + ":" + dakika.ToString() + ":" + saniye.ToString();
            //lvCagri.Items.Add(saat.ToString() + ":"+ dakika.ToString() + ":"+saniye.ToString());
             saniye++;
         }
@@ -137,7 +137,7 @@ namespace CagriMerkezi
 
         }
 
-        private void KelimeYazma()
+        private void KelimeYazma()//girlen kelimleri dizi de tutma
         {
             cumleler = new string[a];
             for (int i = 0; i < a; i++)
@@ -151,7 +151,7 @@ namespace CagriMerkezi
 
         private void btnToplamCagri_Click(object sender, EventArgs e)
         {
-            lblToplamCagri.Text=toplamAramaSayisi.ToString();
+            lblToplamCagri.Text=toplamAramaSayisi.ToString();//toplam yapılan çağrı sayısını verir
             //Sirala();
         }
 
@@ -174,7 +174,7 @@ namespace CagriMerkezi
         private void btnKelimeAra_Click(object sender, EventArgs e)
         {
 
-            for (int i = 0; i < cumleler.Length; i++)//lineer arama-arama algoritması
+            for (int i = 0; i < cumleler.Length; i++)//lineer arama-arama algoritması girilen kelimeler doğrultusunda arama yapar
             {
                 if (txtKelimeAra.Text == cumleler[i])
                     ltbKelimeAra.Items.Add(cumleler[i]);
@@ -184,7 +184,7 @@ namespace CagriMerkezi
             ltbKelimeAra.Items.Clear();
         }
 
-        public void Sirala()//Insertion Sort Implementasyonu-sıralama algoritması
+        public void Sirala()//Insertion Sort Implementasyonu-sıralama algoritması musteri id'ye bağlı olarak sıralama 
         {
             int i, j,moved;
            
