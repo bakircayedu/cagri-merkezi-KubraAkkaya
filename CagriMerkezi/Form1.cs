@@ -181,7 +181,7 @@ namespace CagriMerkezi
                 else
                     ltbKelimeAra.Items.Add("Aradığınız kelime bulunmamaktadır.");
             }
-            ltbKelimeAra.Items.Clear();
+            ltbKelimeAra.Items.Clear(); 
         }
 
         public void Sirala()//Insertion Sort Implementasyonu-sıralama algoritması musteri id'ye bağlı olarak sıralama 
